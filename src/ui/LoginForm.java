@@ -4,6 +4,8 @@
  */
 package ui;
 
+import utils.PasswordUtil;
+import javax.swing.SwingUtilities;
 /**
  *
  * @author earlc
@@ -32,10 +34,9 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtUsername = new javax.swing.JTextPane();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        txtPassword = new javax.swing.JTextPane();
         jLabel2 = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
+        txtPassword = new javax.swing.JPasswordField();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -59,11 +60,6 @@ public class LoginForm extends javax.swing.JFrame {
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 260, 30));
 
-        txtPassword.setBackground(new java.awt.Color(204, 204, 204));
-        jScrollPane2.setViewportView(txtPassword);
-
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 260, 30));
-
         jLabel2.setForeground(java.awt.Color.black);
         jLabel2.setText("Password");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 70, 20));
@@ -78,6 +74,10 @@ public class LoginForm extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 260, 50));
+
+        txtPassword.setBackground(new java.awt.Color(206, 206, 206));
+        txtPassword.setText("jPasswordField1");
+        jPanel2.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 260, 30));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 180, 320, 260));
 
@@ -108,6 +108,11 @@ public class LoginForm extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
+        String username = txtUsername.getText().trim();
+        String password = new String(txtPassword.getPassword());
+        String passwordHash = PasswordUti;.hash(password);
+        var user = controllers.AuthController.login(username, passwordHash);
+        
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
@@ -150,8 +155,7 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextPane txtPassword;
+    private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextPane txtUsername;
     // End of variables declaration//GEN-END:variables
 }
