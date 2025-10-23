@@ -5,6 +5,12 @@
         <group>
             <file>file:/C:/Users/earlc/OneDrive/Documents/NetBeansProjects/GoParkSystem/src/Main.java</file>
             <file>file:/C:/Users/earlc/OneDrive/Documents/NetBeansProjects/GoParkSystem/src/ui/LoginForm.java</file>
+            <file>file:/C:/Users/earlc/OneDrive/Documents/NetBeansProjects/GoParkSystem/src/utils/PasswordUtil.java</file>
+            <file>file:/C:/Users/earlc/OneDrive/Documents/NetBeansProjects/GoParkSystem/src/utils/SessionManager.java</file>
+            <file>file:/C:/Users/earlc/OneDrive/Documents/NetBeansProjects/GoParkSystem/src/models/User.java</file>
+            <file>file:/C:/Users/earlc/OneDrive/Documents/NetBeansProjects/GoParkSystem/src/controllers/AuthController.java</file>
+            <file>file:/C:/Users/earlc/OneDrive/Documents/NetBeansProjects/GoParkSystem/src/database/DatabaseConnection.java</file>
+            <file>file:/C:/Users/earlc/OneDrive/Documents/NetBeansProjects/GoParkSystem/src/database/Queries.java</file>
         </group>
     </open-files>
 </project-private>

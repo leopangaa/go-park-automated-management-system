@@ -19,6 +19,7 @@ public class LoginForm extends javax.swing.JFrame {
      */
     public LoginForm() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -37,6 +38,7 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
         txtPassword = new javax.swing.JPasswordField();
+        btnSignupForm = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -79,6 +81,15 @@ public class LoginForm extends javax.swing.JFrame {
         txtPassword.setText("jPasswordField1");
         jPanel2.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 260, 30));
 
+        btnSignupForm.setForeground(new java.awt.Color(0, 204, 204));
+        btnSignupForm.setText("Don't have an account? Sign up.");
+        btnSignupForm.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSignupFormMouseClicked(evt);
+            }
+        });
+        jPanel2.add(btnSignupForm, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 190, -1));
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 180, 320, 260));
 
         jPanel1.setBackground(new java.awt.Color(206, 206, 206));
@@ -110,8 +121,14 @@ public class LoginForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         String username = txtUsername.getText().trim();
         String password = new String(txtPassword.getPassword());
-        String passwordHash = PasswordUti;.hash(password);
+        String passwordHash = PasswordUtil.hash(password);
         var user = controllers.AuthController.login(username, passwordHash);
+        if(user!=null){
+            javax.swing.JOptionPane.showMessageDialog(this, "Logged In.");
+            this.dispose();
+        } else{
+            javax.swing.JOptionPane.showMessageDialog(this, "Invalid username or password.");
+    }
         
     }//GEN-LAST:event_btnLoginActionPerformed
 
@@ -120,34 +137,24 @@ public class LoginForm extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnExitActionPerformed
 
+    private void btnSignupFormMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSignupFormMouseClicked
+        // TODO add your handling code here:
+        SwingUtilities.invokeLater(() -> {
+            SignupForm signup = new SignupForm();
+            signup.setLocationRelativeTo(null);
+            signup.setVisible(true);
+            this.dispose();
+        });
+    }//GEN-LAST:event_btnSignupFormMouseClicked
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new LoginForm().setVisible(true));
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnLogin;
+    private javax.swing.JLabel btnSignupForm;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
